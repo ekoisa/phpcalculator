@@ -1,49 +1,32 @@
 <?php
 
-namespace Jakmall\Recruitment\Calculator\Commands;
+namespace Jakmall\Recruitment\Calculator\Libraries;
 
-use Illuminate\Console\Command;
-
-class AddCommand extends Command
+class Math
 {
-    /**
-     * @var string
-     */
-    protected $signature;
-
-    /**
-     * @var string
-     */
-    protected $description;
-
     public function __construct()
     {
-        
-        $commandVerb = $this->getCommandVerb();
-
-        $this->signature = sprintf(
-            '%s {numbers* : The numbers to be %s}',
-            $commandVerb,
-            $this->getCommandPassiveVerb()
-        );
-        $this->description = sprintf('%s all given Numbers', ucfirst($commandVerb));
-
-        parent::__construct();
     }
 
     protected function getCommandVerb(): string
-    { 
+    {
+        // print_r(['dbg', 2]); 
         return 'add';
     }
 
     protected function getCommandPassiveVerb(): string
     {
+        // print_r(['dbg', 3]); 
         return 'added';
     }
 
     public function handle(): void
     {
+        // print_r(['dbg', 4]); 
+        // $arguments = $this->arguments();
+        // print_r(['arguments', $arguments]); exit;
         $numbers = $this->getInput();
+        // print_r(['numbers', $numbers]); exit;
         $description = $this->generateCalculationDescription($numbers);
         $result = $this->calculateAll($numbers);
 
