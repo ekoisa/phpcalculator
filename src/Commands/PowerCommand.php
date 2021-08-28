@@ -26,7 +26,8 @@ class PowerCommand extends Base\CalculationBase
     {
         self::$scenario = self::$commandName;
         $input = [$this->getInputItem('numbers'), $this->getInputItem('power')];
-        parent::handleCalculation($input);
+        $result = parent::handleCalculation($input);
+        $this->comment(sprintf('%s = %s', $this->resultDescription, $result));
     }
 
 }

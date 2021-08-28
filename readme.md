@@ -7,7 +7,13 @@
 ```
 ./composer install
 ```
+
 ## Run the Calculator
 ```
 ./calculator
+```
+
+## Run the Test Unit
+```
+./test
 ```
