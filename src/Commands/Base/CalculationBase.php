@@ -16,6 +16,11 @@ class CalculationBase extends Command
      */
     protected $description;
 
+    /**
+     * @var string
+     */
+    protected $resultDescription;
+
     private static $scenarioList = [
         'add' => [
             'command' => 'add',
@@ -85,17 +90,15 @@ class CalculationBase extends Command
         return self::$scenarioList[self::$scenario]['operator'];
     }
 
-    public function handleCalculation($forceInput = null): void
+    public function handleCalculation($forceInput = null): int
     {
         if (is_null($forceInput)) {
             $numbers = $this->getInput();
         } else {
             $numbers = $forceInput;
         }
-        $description = $this->generateCalculationDescription($numbers);
-        $result = $this->calculateAll($numbers);
-
-        $this->comment(sprintf('%s = %s', $description, $result));
+        $this->resultDescription = $this->generateCalculationDescription($numbers);
+        return $this->calculateAll($numbers);
     }
 
     /**

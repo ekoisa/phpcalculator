@@ -24,7 +24,8 @@ class DivideCommand extends Base\CalculationBase
     public function handle(): void
     {
         self::$scenario = self::$commandName;
-        parent::handleCalculation();
+        $result = parent::handleCalculation();
+        $this->comment(sprintf('%s = %s', $this->resultDescription, $result));
     }
 
 }
