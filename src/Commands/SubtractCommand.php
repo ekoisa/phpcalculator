@@ -2,9 +2,9 @@
 
 namespace Jakmall\Recruitment\Calculator\Commands;
 
-class AddCommand extends Base\CalculationBase
+class SubtractCommand extends Base\CalculationBase
 {
-    protected static $commandName = 'add';
+    protected static $commandName = 'substract';
 
     public function __construct()
     {

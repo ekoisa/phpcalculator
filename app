@@ -28,5 +28,12 @@ try {
     $app->addCommands($commands);
 
     $app->run(new ArgvInput(), new ConsoleOutput());
+
 } catch (Throwable $e) {
+
+    $output = new ConsoleOutput();
+    $output->writeln('<comment>debugging:</comment>');
+    $output->writeln('<comment>code = '.$e->getCode().'; file = '.$e->getFile().'; line = '.$e->getLine().'</comment>');
+    $output->writeln('<comment>message = '. $e->getMessage() .'</comment>');
+
 }
