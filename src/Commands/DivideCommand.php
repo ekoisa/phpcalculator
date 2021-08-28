@@ -2,9 +2,9 @@
 
 namespace Jakmall\Recruitment\Calculator\Commands;
 
-class AddCommand extends Base\CalculationBase
+class DivideCommand extends Base\CalculationBase
 {
-    protected static $commandName = 'add';
+    protected static $commandName = 'divide';
 
     public function __construct()
     {

@@ -2,9 +2,9 @@
 
 namespace Jakmall\Recruitment\Calculator\Commands;
 
-class AddCommand extends Base\CalculationBase
+class PowerCommand extends Base\CalculationBase
 {
-    protected static $commandName = 'add';
+    protected static $commandName = 'power';
 
     public function __construct()
     {
@@ -12,8 +12,9 @@ class AddCommand extends Base\CalculationBase
         $commandVerb = $this->getCommandVerb();
 
         $this->signature = sprintf(
-            '%s {numbers* : The numbers to be %s}',
+            '%s {numbers : The numbers to be %s} {power : The %s value}',
             $commandVerb,
+            $this->getCommandPassiveVerb(),
             $this->getCommandPassiveVerb()
         );
         $this->description = sprintf('%s all given Numbers', ucfirst($commandVerb));
@@ -24,7 +25,8 @@ class AddCommand extends Base\CalculationBase
     public function handle(): void
     {
         self::$scenario = self::$commandName;
-        parent::handleCalculation();
+        $input = [$this->getInputItem('numbers'), $this->getInputItem('power')];
+        parent::handleCalculation($input);
     }
 
 }
